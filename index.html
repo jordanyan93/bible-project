@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Cross-Reference Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Bible Cross-Reference Network</h1>
+            <div id="controls">
+                <div class="control-group">
+                    <label for="search">Search Verse:</label>
+                    <input type="text" id="search" placeholder="e.g., GEN 1 1">
+                </div>
+                <div class="control-group">
+                    <label for="book-filter">Filter by Book:</label>
+                    <select id="book-filter">
+                        <option value="">All Books</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="min-refs">Min References:</label>
+                    <input type="number" id="min-refs" value="0" min="0" max="100" style="width: 70px;">
+                </div>
+                <button id="show-stats-btn">📊 Network Stats</button>
+                <button id="reset-btn">Reset View</button>
+            </div>
+        </div>
+
+        <div id="canvas-container">
+            <canvas id="canvas"></canvas>
+            
+            <div id="info-panel">
+                <h3>Verse Details</h3>
+                <div class="verse-ref"></div>
+                <div class="stats"></div>
+                <div class="references"></div>
+            </div>
+
+            <div id="legend">
+                <h4>Legend</h4>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #6ba3ff;"></div>
+                    <span>Verse Point</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: rgba(255, 200, 100, 0.3);"></div>
+                    <span>Cross-Reference Line</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff6b6b;"></div>
+                    <span>Selected Verse</span>
+                </div>
+            </div>
+
+            <div id="stats">
+                <h4>Statistics</h4>
+                <div class="stat-item">Verses: <span class="stat-value" id="verse-count">0</span></div>
+                <div class="stat-item">References: <span class="stat-value" id="ref-count">0</span></div>
+                <div class="stat-item">Books: <span class="stat-value" id="book-count">0</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript modules -->
+    <script src="config.js"></script>
+    <script src="dataLoader.js"></script>
+    <script src="renderer.js"></script>
+    <script src="networkStats.js"></script>
+    <script src="statsPanel.js"></script>
+    <script src="eventHandlers.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
